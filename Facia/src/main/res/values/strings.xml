@@ -1,0 +1,98 @@
+<resources>
+    <string name="app_name">facia</string>
+
+    <string name="position_face_in_oval">Position your face inside oval</string>
+    <string name="fit_face_in_oval">Fit your face in the oval</string>
+    <string name="straighten_your_face">Straighten your face</string>
+    <string name="move_away">Move away</string>
+    <string name="move_closer">Move close and fill oval</string>
+    <string name="blink_your_eyes">Keep blinking your eyes</string>
+    <string name="confirm">Confirm</string>
+    <string name="dismiss">Dismiss</string>
+    <string name="perfect">Perfect</string>
+    <string name="hold_steady">Hold steady</string>
+    <string name="continue_st">Continue</string>
+    <string name="face_liveness_heading">Face Liveness</string>
+    <string name="confirm_cancellation">Confirm Cancellation</string>
+    <string name="cancel">Cancel</string>
+    <string name="not_now">Not Now</string>
+    <string name="footer_txt">© Powered By </string>
+    <string name="sure_to_cancel_process">Are you sure you want to cancel the verification process?</string>
+    <string name="no_internet">No Internet Connection</string>
+    <string name="no_internet_details">Please check your internet connection &amp; try again.</string>
+    <string name="uploading">Uploading…</string>
+    <string name="photo_id_matched">Photo id matched</string>
+    <string name="photo_id_not_matched">Photo id not matched</string>
+    <string name="verified">Liveness verified</string>
+    <string name="unverified">Liveness could not be verified</string>
+    <string name="request_timed_out">Request has been timed out</string>
+    <string name="went_wrong">Something went wrong.</string>
+    <string name="additional_verification">Additional verification required</string>
+    <string name="position_face_in_front_of_camera">Position your face in\nfront of the camera</string>
+    <string name="error">Error</string>
+    <string name="exit">Exit</string>
+    <string name="unable_to_proceed">Unable to proceed on your device.</string>
+    <string name="retake">Retake</string>
+    <string name="fit_card_in_box">Place your card inside the box</string>
+    <string name="doc_in_front_of_cam">Place your document in front of the camera</string>
+    <string name="sales_email">sales@facia.ai</string>
+    <string name="meeting_link">https://meetings.hubspot.com/fatima-baloch/15-min-discovery-call</string>
+    <string name="send_email_title">Send email</string>
+    <string name="confirmation">Confirmation</string>
+    <string name="exitTxt">Are you sure you want to exit?</string>
+    <string name="ensure_lit_env">Please ensure a well-lit environment</string>
+    <string name="remove_wearables">Please take off sunglasses or hats</string>
+    <string name="perfect_light">Light should be distributed evenly</string>
+    <string name="remove_mask">Take off any masks covering your face</string>
+
+    <string name="permission_dialog_heading">Camera Access Needed</string>
+    <string name="permission_dialog_text">It looks like your privacy settings are preventing us from accessing your camera to record proof. You can fix this by doing the following:</string>
+    <string name="permission_inst_1">1. Touch the Go button below to open the settings app.</string>
+    <string name="permission_inst_2">2. Allow the camera from the permissions.</string>
+    <string name="permission_inst_3">3. Open this app and try again.</string>
+    <string name="go">Go</string>
+
+    <!--    camera instructions-->
+    <string name="instructions_heading">For Best Results:</string>
+    <string name="cam_inst_1">Please clean your selfie camera</string>
+    <string name="cam_inst_2">Please ensure a clean background</string>
+    <string name="cam_inst_3">Please ensure good lighting condition</string>
+    <string name="cam_inst_4">Please ensure that your face is clearly visible</string>
+    <string name="cam_inst_5">For best results, please take off any wearables</string>
+
+    <string name="try_passport">Try Passport</string>
+
+    <!--    demo app strings-->
+    <string name="consent_heading">Help us by taking your identity consent</string>
+    <string name="consent_str1">I declare that I am at least 16 years of age</string>
+    <string name="consent_str2">I shall be fully responsible in case I provide wrong information or any proof, I use is the face, forged, counterfeit, etc.</string>
+    <string name="consent_str3">I agree to the collection, processing, and storage of my personal information, including biometric data, by facia.ai for the purpose(s) of verifying that the information I provide is \"true and accurate to the best of my knowledge\"</string>
+    <string name="i_agree">I agree to the above statement, &amp; I have read the <a color="#000000" href="https://facia.ai/privacy-policy/">Privacy Policy</a> &amp; <a color="#000000" href="https://facia.ai/terms-service/">Terms of use</a> of Facia.</string>
+    <string name="try_again">Try Again</string>
+    <string name="thank_you">Thank You!</string>
+    <string name="trial_period_concluded">Your trial period has concluded</string>
+    <string name="feel_free_to_reach_us">For any further queries, please feel free to reach us.</string>
+    <string name="email_us">Email us</string>
+    <string name="book_a_meeting">Book a meeting</string>
+    <string name="please_come_back">Please come back again</string>
+    <string name="share_email_heading">Please share your email</string>
+    <string name="email_hint">sample@domain.com</string>
+    <string name="are_you_satisfied">Are you satisfied with our service?</string>
+    <string name="help_us_improve">Help us improve</string>
+    <string name="verification_type_heading">Start a Verification Process</string>
+    <string name="doc_type_heading">Select a document type</string>
+    <string name="face_liveness">3D Liveness Check</string>
+    <string name="id_card">ID Card</string>
+    <string name="passport">Passport</string>
+    <string name="match_photo_id">Match to Photo ID</string>
+    <string name="document_liveness">Document Liveness</string>
+    <string name="share_suggestion_heading">Please share your feedback</string>
+    <string name="suggestion_hint">Share your feedback</string>
+    <string name="suggestion_max_length">0/500</string>
+    <string name="suggestion_max_length_error_msg">Maximum text length exceeded.</string>
+    <string name="improper_lighting">Improper lighting</string>
+
+    <string name="no_face_found">No face found</string>
+
+
+</resources>
