@@ -57,7 +57,7 @@ dependencies {
     implementation 'com.kaopiz:kprogresshud:1.2.0'
 
     //     Navigation Controlling dependencies
-    def nav_version = "2.5.3"
+    def nav_version = "2.7.6"
     //noinspection GradleDependency
     implementation "androidx.navigation:navigation-fragment:$nav_version"
     //noinspection GradleDependency
