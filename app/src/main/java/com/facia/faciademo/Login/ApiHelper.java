@@ -201,17 +201,17 @@ public class ApiHelper {
             if (response.isSuccessful()) {
                 FaciaAi faciaAi = new FaciaAi();
                 if (fragmentLoginBinding.serviceTypeRadioGroup.getCheckedRadioButtonId() == fragmentLoginBinding.matchIdOpt.getId()){
-                    if (fragmentLoginBinding.matchIdThroughCam.isChecked()){
+//                    if (fragmentLoginBinding.matchIdThroughCam.isChecked()){
                         faciaAi.createRequest("", parentActivity, getconfig(), new RequestListener() {
                             @Override
                             public void requestStatus(HashMap<String, String> responseSet) {
 
                             }
                         });
-                        faciaAi.createRequest(response.body().getResult().getData().getToken(), parentActivity, getconfig(),
-                                responseSet ->
-                                        Toast.makeText(parentActivity, responseSet.toString(), Toast.LENGTH_LONG).show());
-                    }else {
+//                        faciaAi.createRequest(response.body().getResult().getData().getToken(), parentActivity, getconfig(),
+//                                responseSet ->
+//                                        Toast.makeText(parentActivity, responseSet.toString(), Toast.LENGTH_LONG).show());
+//                    }else {
 //                        Bitmap faceBmp = BitmapFactory.decodeResource(MainSetAndGetData.getInstance().getActivity().getResources(),
 //                                R.drawable.test_face);
 //                        Bitmap docBmp = BitmapFactory.decodeResource(MainSetAndGetData.getInstance().getActivity().getResources(),
@@ -219,7 +219,7 @@ public class ApiHelper {
 //                        faciaAi.checkSimilarity(response.body().getResult().getData().getToken(), parentActivity, faceFile(faceBmp),
 //                                cardFile(docBmp), 0.80f, getconfig(), responseSet ->
 //                                        Toast.makeText(parentActivity, responseSet.toString(), Toast.LENGTH_LONG).show());
-                    }
+//                    }
                 } else {
                     faciaAi.createRequest(response.body().getResult().getData().getToken(), parentActivity, getconfig(),
                             responseSet ->
