@@ -212,13 +212,13 @@ public class ApiHelper {
                                 responseSet ->
                                         Toast.makeText(parentActivity, responseSet.toString(), Toast.LENGTH_LONG).show());
                     }else {
-                        Bitmap faceBmp = BitmapFactory.decodeResource(MainSetAndGetData.getInstance().getActivity().getResources(),
-                                R.drawable.test_face);
-                        Bitmap docBmp = BitmapFactory.decodeResource(MainSetAndGetData.getInstance().getActivity().getResources(),
-                                R.drawable.test_card);
-                        faciaAi.checkSimilarity(response.body().getResult().getData().getToken(), parentActivity, faceFile(faceBmp),
-                                cardFile(docBmp), 0.80f, getconfig(), responseSet ->
-                                        Toast.makeText(parentActivity, responseSet.toString(), Toast.LENGTH_LONG).show());
+//                        Bitmap faceBmp = BitmapFactory.decodeResource(MainSetAndGetData.getInstance().getActivity().getResources(),
+//                                R.drawable.test_face);
+//                        Bitmap docBmp = BitmapFactory.decodeResource(MainSetAndGetData.getInstance().getActivity().getResources(),
+//                                R.drawable.test_card);
+//                        faciaAi.checkSimilarity(response.body().getResult().getData().getToken(), parentActivity, faceFile(faceBmp),
+//                                cardFile(docBmp), 0.80f, getconfig(), responseSet ->
+//                                        Toast.makeText(parentActivity, responseSet.toString(), Toast.LENGTH_LONG).show());
                     }
                 } else {
                     faciaAi.createRequest(response.body().getResult().getData().getToken(), parentActivity, getconfig(),
