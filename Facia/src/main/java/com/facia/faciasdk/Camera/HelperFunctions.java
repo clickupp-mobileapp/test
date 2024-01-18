@@ -271,7 +271,10 @@ public class HelperFunctions {
 //                        .addToBackStack(null)
 //                        .commitAllowingStateLoss();
 //            } else {
+<<<<<<< HEAD
+=======
             SingletonData.getInstance().setQlReqInProcess(false);
+>>>>>>> origin/main
             terminateSdkAndReturnResponse();
 //            }
         } catch (Exception e) {
@@ -309,7 +312,10 @@ public class HelperFunctions {
 //                showBottomSheet();
 //            }
             SingletonData.getInstance().setQuickRequestInProcess(false);
+<<<<<<< HEAD
+=======
             SingletonData.getInstance().setQlReqInProcess(false);
+>>>>>>> origin/main
             SingletonData.getInstance().setSmallOvalSteadyTimerOn(false);
             cameraFragment.recursiveQlCounter = cameraFragment.recursiveQlCounter + 1;
             cameraFragment.currentState = "QL";

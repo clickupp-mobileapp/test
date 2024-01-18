@@ -24,11 +24,14 @@
 
 -keepattributes InnerClasses
 
+<<<<<<< HEAD
+=======
 # Keep Retrofit annotations
 -keepattributes Signature
 -keepattributes Exceptions
 -keepattributes *Annotation*
 
+>>>>>>> origin/main
 -keep class com.facia.faciasdk.FaciaAi
 
 -keepclassmembers class com.facia.faciasdk.FaciaAi** {
@@ -51,6 +54,8 @@
 
 *;
 
+<<<<<<< HEAD
+=======
 }
 
 -keep interface retrofit2.Call {
@@ -64,4 +69,5 @@
 
 -keep class com.google.gson.** {
     *;
+>>>>>>> origin/main
 }

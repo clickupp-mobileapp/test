@@ -2,7 +2,10 @@ package com.facia.faciasdk.Camera.FaceDetection;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+<<<<<<< HEAD
+=======
 import android.graphics.Bitmap;
+>>>>>>> origin/main
 import android.graphics.Rect;
 import android.util.Log;
 import android.view.View;
@@ -41,10 +44,17 @@ public class FaceDetectionHelper extends AppCompatImageView {
      * if yes then calling further method to detect face angle, position etc
      */
     @SuppressLint({"SetTextI18n", "ResourceAsColor"})
+<<<<<<< HEAD
+    public void setFaceMeshResult(Face face) {
+        try {
+            if (face != null) {
+                checkFacePosition(face.getAllContours());
+=======
     public void setFaceMeshResult(Face face, Bitmap bitmap) {
         try {
             if (face != null) {
                 checkFacePosition(face.getAllContours(), bitmap);
+>>>>>>> origin/main
             } else {
                 if (SingletonData.getInstance().isQuickLiveness() && !SingletonData.getInstance().isQuickRequestInProcess()) {
                     SingletonData.getInstance().setQuickLivenessFrameCount(0);
@@ -54,7 +64,11 @@ public class FaceDetectionHelper extends AppCompatImageView {
 //                        SingletonData.getInstance().getFragmentCameraBinding().quickLivenessInst.setVisibility(View.VISIBLE);
                     });
                 }
+<<<<<<< HEAD
+                updateUiOnFacePositionChanged("noFace", null);
+=======
                 updateUiOnFacePositionChanged("noFace", null, null);
+>>>>>>> origin/main
             }
         } catch (Exception e) {
             Webhooks.exceptionReport(e, "CameraFragment/FaceDetectionHelper/setFaceMeshResult");
@@ -85,12 +99,29 @@ public class FaceDetectionHelper extends AppCompatImageView {
      * @param faceContourList contour list
      */
     @SuppressLint("ResourceAsColor")
+<<<<<<< HEAD
+    private void checkFacePosition(List<FaceContour> faceContourList) {
+=======
     private void checkFacePosition(List<FaceContour> faceContourList, Bitmap bitmap) {
+>>>>>>> origin/main
         try {
             Rect ovalRect = getOvalRect();
             Rect faceRect = getFaceRect(faceContourList);
             if (SingletonData.getInstance().isQuickLiveness()) {
                 Rect ovalRectWithMargin = getOvalRectWithMargin();
+<<<<<<< HEAD
+                checkFacePositionQl(faceRect, ovalRect, ovalRectWithMargin, faceContourList);
+            } else if (ovalRect.contains(faceRect)) {
+                faceWithinOval(faceContourList, faceRect, ovalRect);
+            } else if (ovalRect.intersect(faceRect)) {
+                if (faceRect.height() > getOvalRect().height() && faceRect.width() > getOvalRect().width()) {
+                    updateUiOnFacePositionChanged("moveAway", faceContourList);
+                } else {
+                    updateUiOnFacePositionChanged("fitFace", faceContourList);
+                }
+            } else {
+                updateUiOnFacePositionChanged("positionFace", faceContourList);
+=======
                 checkFacePositionQl(faceRect, ovalRect, ovalRectWithMargin, faceContourList, bitmap);
             } else if (ovalRect.contains(faceRect)) {
                 faceWithinOval(faceContourList, faceRect, ovalRect, bitmap);
@@ -102,6 +133,7 @@ public class FaceDetectionHelper extends AppCompatImageView {
                 }
             } else {
                 updateUiOnFacePositionChanged("positionFace", faceContourList, bitmap);
+>>>>>>> origin/main
             }
         } catch (Exception e) {
             Webhooks.exceptionReport(e, "CameraFragment/FaceDetectionHelper/drawLandmarksOnCanvas");
@@ -115,7 +147,11 @@ public class FaceDetectionHelper extends AppCompatImageView {
      * @param faceRect        Points of face position
      * @param faceContourList facial contours
      */
+<<<<<<< HEAD
+    private void checkFacePositionQl(Rect faceRect, Rect ovalRect, Rect ovalRectWithMargin, List<FaceContour> faceContourList) {
+=======
     private void checkFacePositionQl(Rect faceRect, Rect ovalRect, Rect ovalRectWithMargin, List<FaceContour> faceContourList, Bitmap bitmap) {
+>>>>>>> origin/main
         try {
             if (ovalRectWithMargin.contains(faceRect)){
                 if (faceRect.width() > ovalRect.width() / ThresholdConstants.QL_OVAL_THRESHOLD_LOW &&
@@ -123,20 +159,42 @@ public class FaceDetectionHelper extends AppCompatImageView {
                     if (!isFaceTiltedOrMovedQuickLiveness(faceContourList)) {
                         SingletonData.getInstance().setQuickLivenessFrameCount(
                                 SingletonData.getInstance().getQuickLivenessFrameCount() + 1);
+<<<<<<< HEAD
+                        SingletonData.getInstance().getCameraListeners().convertBitmapToBase64();
+                        updateUiOnFacePositionChanged("faceFound", faceContourList);
+                    }else {
+                        SingletonData.getInstance().setQuickLivenessFrameCount(0);
+                        updateUiOnFacePositionChanged("straightFace", faceContourList);
+=======
                         SingletonData.getInstance().getCameraListeners().convertBitmapToBase64(bitmap);
                         updateUiOnFacePositionChanged("faceFound", faceContourList, bitmap);
                     }else {
                         SingletonData.getInstance().setQuickLivenessFrameCount(0);
                         updateUiOnFacePositionChanged("straightFace", faceContourList, bitmap);
+>>>>>>> origin/main
                         SingletonData.getInstance().getCameraListeners().frameProcessed();
                     }
                 } else {
                     SingletonData.getInstance().setQuickLivenessFrameCount(0);
+<<<<<<< HEAD
+                    updateUiOnFacePositionChanged("moveCloser", faceContourList);
+=======
                     updateUiOnFacePositionChanged("moveCloser", faceContourList, bitmap);
+>>>>>>> origin/main
                 }
             }else if (ovalRectWithMargin.intersect(faceRect)){
                 if (faceRect.height() > ovalRectWithMargin.height() && faceRect.width() > ovalRectWithMargin.width()) {
                     SingletonData.getInstance().setQuickLivenessFrameCount(0);
+<<<<<<< HEAD
+                    updateUiOnFacePositionChanged("moveAway", faceContourList);
+                } else {
+                    SingletonData.getInstance().setQuickLivenessFrameCount(0);
+                    updateUiOnFacePositionChanged("fitFace", faceContourList);
+                }
+            }else {
+                SingletonData.getInstance().setQuickLivenessFrameCount(0);
+                updateUiOnFacePositionChanged("positionFace", faceContourList);
+=======
                     updateUiOnFacePositionChanged("moveAway", faceContourList, bitmap);
                 } else {
                     SingletonData.getInstance().setQuickLivenessFrameCount(0);
@@ -145,6 +203,7 @@ public class FaceDetectionHelper extends AppCompatImageView {
             }else {
                 SingletonData.getInstance().setQuickLivenessFrameCount(0);
                 updateUiOnFacePositionChanged("positionFace", faceContourList, bitmap);
+>>>>>>> origin/main
             }
 
 
@@ -282,7 +341,11 @@ public class FaceDetectionHelper extends AppCompatImageView {
      * @param faceRect        Rect of face
      * @param ovalRect        Rect of oval (UI view)
      */
+<<<<<<< HEAD
+    private void faceWithinOval(List<FaceContour> faceContourList, Rect faceRect, Rect ovalRect) {
+=======
     private void faceWithinOval(List<FaceContour> faceContourList, Rect faceRect, Rect ovalRect, Bitmap bitmap) {
+>>>>>>> origin/main
         try {
             if (!isFaceTiltedOrMoved(faceContourList)) {
                 double smallThresholdDivisor = ThresholdConstants.SMALL_OVAL_THRESHOLD_MEDIUM;
@@ -300,13 +363,28 @@ public class FaceDetectionHelper extends AppCompatImageView {
                 if (SingletonData.getInstance().isOvalSizeIncreased()) {
                     if (faceRect.width() > ovalRect.width() / largeThresholdDivisor &&
                             faceRect.height() > ovalRect.height() / largeThresholdDivisor) {
+<<<<<<< HEAD
+                        updateUiOnFacePositionChanged("faceFound", faceContourList);
+                    } else {
+                        updateUiOnFacePositionChanged("moveCloser", faceContourList);
+=======
                         updateUiOnFacePositionChanged("faceFound", faceContourList, bitmap);
                     } else {
                         updateUiOnFacePositionChanged("moveCloser", faceContourList, bitmap);
+>>>>>>> origin/main
                     }
                 } else {
                     if (faceRect.width() > ovalRect.width() / smallThresholdDivisor &&
                             faceRect.height() > ovalRect.height() / smallThresholdDivisor) {
+<<<<<<< HEAD
+                        updateUiOnFacePositionChanged("faceFound", faceContourList);
+                    } else {
+                        updateUiOnFacePositionChanged("moveCloser", faceContourList);
+                    }
+                }
+            } else {
+                updateUiOnFacePositionChanged("straightFace", faceContourList);
+=======
                         updateUiOnFacePositionChanged("faceFound", faceContourList, bitmap);
                     } else {
                         updateUiOnFacePositionChanged("moveCloser", faceContourList, bitmap);
@@ -314,6 +392,7 @@ public class FaceDetectionHelper extends AppCompatImageView {
                 }
             } else {
                 updateUiOnFacePositionChanged("straightFace", faceContourList, bitmap);
+>>>>>>> origin/main
             }
         } catch (Exception e) {
             Webhooks.exceptionReport(e, "CameraFragment/FaceDetectionHelper/faceWithinOval");
@@ -326,7 +405,11 @@ public class FaceDetectionHelper extends AppCompatImageView {
      * @param state           state according to face position
      * @param faceContourList list of facial landmarks
      */
+<<<<<<< HEAD
+    private void updateUiOnFacePositionChanged(final String state, List<FaceContour> faceContourList) {
+=======
     private void updateUiOnFacePositionChanged(final String state, List<FaceContour> faceContourList, Bitmap bitmap) {
+>>>>>>> origin/main
         try {
             if (!SingletonData.getInstance().isQuickRequestInProcess() && !SingletonData.getInstance().isFaceFinalized()) {
                 DetectionUiUpdater cameraInterface = new DetectionUiUpdater(blinkTimeout, ovalSize);
@@ -344,7 +427,11 @@ public class FaceDetectionHelper extends AppCompatImageView {
                                 }
                             }
                             if (SingletonData.getInstance().isQuickLiveness()) {
+<<<<<<< HEAD
+                                cameraInterface.faceFoundEdgeToEdgeQl();
+=======
                                 cameraInterface.faceFoundEdgeToEdgeQl(bitmap);
+>>>>>>> origin/main
                             } else {
                                 cameraInterface.faceFoundEdgeToEdgeDl(faceContourList);
                             }

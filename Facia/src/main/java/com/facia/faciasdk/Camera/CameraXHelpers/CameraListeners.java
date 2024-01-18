@@ -10,7 +10,11 @@ public interface CameraListeners {
 
     void stopVideoRecording();
 
+<<<<<<< HEAD
+    void processQuickLiveness();
+=======
     void processQuickLiveness(Bitmap bitmap);
+>>>>>>> origin/main
 
     void cameraTimeOut();
 
@@ -22,5 +26,9 @@ public interface CameraListeners {
     void setUi(int cameraLayoutVisibility, int faceLayoutVisibility, int matchIdLayoutVisibility, int docLivenessLayoutVisibility, int quickLivenessInstVisibility,
                int qlResultInstructionScrVisibility, int resultLayoutVisibility, int imgPreviewLayoutVisibility);
 
+<<<<<<< HEAD
+    void convertBitmapToBase64();
+=======
     void convertBitmapToBase64(Bitmap bitmap);
+>>>>>>> origin/main
 }

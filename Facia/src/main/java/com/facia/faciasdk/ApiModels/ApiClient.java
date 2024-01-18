@@ -8,6 +8,10 @@ import java.util.concurrent.TimeUnit;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+<<<<<<< HEAD
+import com.facia.faciasdk.BuildConfig;
+=======
+>>>>>>> origin/main
 
 
 public class ApiClient {

@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+<<<<<<< HEAD
+    xmlns:tools="http://schemas.android.com/tools">
+=======
     xmlns:tools="http://schemas.android.com/tools"
     package="com.facia.faciademo">
+>>>>>>> origin/main
 
     <application
         android:allowBackup="true"

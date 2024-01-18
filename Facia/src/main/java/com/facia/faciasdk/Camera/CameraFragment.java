@@ -22,7 +22,10 @@ import android.os.Looper;
 import android.provider.MediaStore;
 import android.util.Base64;
 import android.util.Log;
+<<<<<<< HEAD
+=======
 import android.util.Size;
+>>>>>>> origin/main
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,7 +46,10 @@ import androidx.camera.video.Recorder;
 import androidx.camera.video.Recording;
 import androidx.camera.video.VideoCapture;
 import androidx.camera.video.VideoRecordEvent;
+<<<<<<< HEAD
+=======
 import androidx.camera.view.PreviewView;
+>>>>>>> origin/main
 import androidx.core.content.ContextCompat;
 import androidx.core.util.Consumer;
 import androidx.fragment.app.Fragment;
@@ -56,6 +62,10 @@ import com.facia.faciasdk.Activity.Helpers.IntentHelper;
 import com.facia.faciasdk.Activity.Helpers.Enums.FaceLivenessType;
 import com.facia.faciasdk.Activity.Helpers.Enums.OvalSize;
 import com.facia.faciasdk.Activity.Helpers.RequestModel;
+<<<<<<< HEAD
+import com.facia.faciasdk.BuildConfig;
+=======
+>>>>>>> origin/main
 import com.facia.faciasdk.Camera.ApiHelpers.LivenessApiHelper;
 import com.facia.faciasdk.Camera.ApiHelpers.SimilarityApiHelper;
 import com.facia.faciasdk.Camera.CameraXHelpers.CameraListeners;
@@ -108,7 +118,11 @@ public class CameraFragment extends Fragment implements CameraListeners, View.On
     protected Preview previewUseCase;
     private long qlListCurrent, qlListPrevious;
     private FaceDetectionHelper faceDetectionHelper;
+<<<<<<< HEAD
+    private Bitmap detectedFaceFrame;
+=======
 //    private Bitmap detectedFaceFrame;
+>>>>>>> origin/main
     private FragmentCameraBinding fragmentCameraBinding;
     private final Runnable docBtnRunnable = () -> {
         if (fragmentCameraBinding.imagePreviewParentLayout.getVisibility() != View.VISIBLE) {
@@ -168,7 +182,11 @@ public class CameraFragment extends Fragment implements CameraListeners, View.On
                     SingletonData.getInstance().setVideoRecording(false);
                     if (SingletonData.getInstance().isFaceFinalized()) {
                         SingletonData.getInstance().setFaceFinalized(false);
+<<<<<<< HEAD
+                        initRequests(storagePath);
+=======
                         initRequests(storagePath, null);
+>>>>>>> origin/main
                         try {
                             cameraProvider.unbindAll();
                         } catch (Exception e) {
@@ -210,7 +228,10 @@ public class CameraFragment extends Fragment implements CameraListeners, View.On
             dialog = new Dialog(SingletonData.getInstance().getContext());
             SingletonData.getInstance().setFragmentCameraBinding(fragmentCameraBinding);
             SingletonData.getInstance().setCameraListeners(this);
+<<<<<<< HEAD
+=======
             SingletonData.getInstance().setQlReqInProcess(false);
+>>>>>>> origin/main
             SingletonData.getInstance().setCameraBackPressed(false);
             initHelperClasses();
             if (requestModel.isSimilarity()) {
@@ -347,11 +368,17 @@ public class CameraFragment extends Fragment implements CameraListeners, View.On
     private void bindCameraUseCases(Boolean isLiveness) {
         try {
             Preview.Builder builder = new Preview.Builder();
+<<<<<<< HEAD
+            previewUseCase = builder.build();
+            previewUseCase.setSurfaceProvider(fragmentCameraBinding.previewView.getSurfaceProvider());
+            Recorder recorder = new Recorder.Builder()
+=======
 //            @SuppressLint("RestrictedApi") Preview.Builder builder = new Preview.Builder().setMaxResolution(new Size(1920,1080));
             previewUseCase = builder.build();
             previewUseCase.setSurfaceProvider(fragmentCameraBinding.previewView.getSurfaceProvider());
             Recorder recorder = new Recorder.Builder()
 //                    .setQualitySelector(QualitySelector.from(Quality.HIGHEST, FallbackStrategy.higherQualityOrLowerThan(Quality.HIGHEST))).build();
+>>>>>>> origin/main
                     .setQualitySelector(QualitySelector.from(Quality.SD, FallbackStrategy.higherQualityOrLowerThan(Quality.SD))).build();
             videoCapture = VideoCapture.withOutput(recorder);
             new ViewModelProvider(this, (ViewModelProvider.Factory)
@@ -380,7 +407,10 @@ public class CameraFragment extends Fragment implements CameraListeners, View.On
             } else if (ServiceType.valueOf(requestModel.getConfigObject().getString("serviceType")) == ServiceType.MATCH_TO_PHOTO_ID ||
                     ServiceType.valueOf(requestModel.getConfigObject().getString("serviceType")) == ServiceType.DOCUMENT_LIVENESS &&
                             DocumentType.valueOf(requestModel.getConfigObject().getString("documentType")) == DocumentType.ID_CARD) {
+<<<<<<< HEAD
+=======
                 new TestPreview().execute();//android 14
+>>>>>>> origin/main
                 SingletonData.getInstance().getActivity().runOnUiThread(() ->
                         new Handler().postDelayed(() -> detectCard(), 1000));
             }
@@ -411,10 +441,15 @@ public class CameraFragment extends Fragment implements CameraListeners, View.On
                             frameCounter++;
                             if (bitmap != null && frameCounter > 1) {
                                 try {
+<<<<<<< HEAD
+                                    if (Color.alpha(bitmap.getPixel(0, 0)) != 0 &&
+                                            fragmentCameraBinding.cameraInstParentLayout.getVisibility() == View.GONE) {
+=======
                                     if ((Color.alpha(bitmap.getPixel(0, 0)) != 0 || fragmentCameraBinding.previewView.getPreviewStreamState()
                                             .getValue().toString().equalsIgnoreCase("STREAMING"))  &&
                                             fragmentCameraBinding.cameraInstParentLayout.getVisibility() == View.GONE) {
                                         fragmentCameraBinding.hidePreviewView.setVisibility(View.GONE);//android 14
+>>>>>>> origin/main
                                         fragmentCameraBinding.cameraInstParentLayout.setVisibility(View.VISIBLE);
                                     }
                                 } catch (Exception e) {
@@ -428,9 +463,15 @@ public class CameraFragment extends Fragment implements CameraListeners, View.On
                                     }
                                 }
 
+<<<<<<< HEAD
+                                if (SingletonData.getInstance().isQuickLiveness()) {
+                                    detectedFaceFrame = bitmap;
+                                }
+=======
 //                                if (SingletonData.getInstance().isQuickLiveness()) {
 //                                    detectedFaceFrame = bitmap;
 //                                }
+>>>>>>> origin/main
                                 detectFaceInFrame(bitmap);
                             } else {
                                 frameProcessed();
@@ -475,9 +516,15 @@ public class CameraFragment extends Fragment implements CameraListeners, View.On
                                         } else {
                                             index = 0;
                                         }
+<<<<<<< HEAD
+                                        faceDetectionHelper.setFaceMeshResult(faces.get(index));
+                                    } else {
+                                        faceDetectionHelper.setFaceMeshResult(null);
+=======
                                         faceDetectionHelper.setFaceMeshResult(faces.get(index), frame);
                                     } else {
                                         faceDetectionHelper.setFaceMeshResult(null, frame);
+>>>>>>> origin/main
                                     }
                                 } catch (Exception e) {
                                     Webhooks.exceptionReport(e, "CameraFragment/detectFaceInFrame/faceCallback");
@@ -486,7 +533,11 @@ public class CameraFragment extends Fragment implements CameraListeners, View.On
                     .addOnFailureListener(
                             e -> {
                                 Webhooks.testingValues("Face detection failure: " + e.getMessage());
+<<<<<<< HEAD
+                                faceDetectionHelper.setFaceMeshResult(null);
+=======
                                 faceDetectionHelper.setFaceMeshResult(null, frame);
+>>>>>>> origin/main
                             });
             framesList.add(fragmentCameraBinding.previewView.getBitmap());
         } catch (Exception e) {
@@ -553,7 +604,11 @@ public class CameraFragment extends Fragment implements CameraListeners, View.On
         isCamStopped = false;
         if (SingletonData.getInstance().isCameraProcessing()) {
             frameProcessed();
+<<<<<<< HEAD
+        } else if (isCardDetectionInProcess) {
+=======
         } else if (isCardDetectionInProcess || fragmentCameraBinding.docParentLayout.getVisibility() == View.VISIBLE) {
+>>>>>>> origin/main
             detectCard();
         }
     }
@@ -631,10 +686,16 @@ public class CameraFragment extends Fragment implements CameraListeners, View.On
     }
 
     @Override
+<<<<<<< HEAD
+    public void processQuickLiveness() {
+//        stopVideoRecording();
+        fragmentCameraBinding.showInstBtn.setEnabled(false);
+=======
     public void processQuickLiveness(Bitmap bitmap) {
 //        stopVideoRecording();
         fragmentCameraBinding.showInstBtn.setEnabled(false);
         SingletonData.getInstance().setQlReqInProcess(true);
+>>>>>>> origin/main
         SingletonData.getInstance().setQuickRequestInProcess(true);
         try {
             cameraProvider.unbindAll();
@@ -650,7 +711,11 @@ public class CameraFragment extends Fragment implements CameraListeners, View.On
         } catch (Exception e) {
             Webhooks.exceptionReport(e, "CameraFragment/processQuickLiveness-inner");
         }
+<<<<<<< HEAD
+        SingletonData.getInstance().getActivity().runOnUiThread(() -> initRequests(""));
+=======
         SingletonData.getInstance().getActivity().runOnUiThread(() -> initRequests("", bitmap));
+>>>>>>> origin/main
     }
 
     @Override
@@ -673,7 +738,11 @@ public class CameraFragment extends Fragment implements CameraListeners, View.On
      * invoking further method to set animation views
      * handling click of continue button (exiting from sdk)
      */
+<<<<<<< HEAD
+    private void initRequests(String filePath) {
+=======
     private void initRequests(String filePath, Bitmap bitmap) {
+>>>>>>> origin/main
         try {
             isCardDetectionInProcess = false;
             isCamStopped = false;
@@ -688,8 +757,12 @@ public class CameraFragment extends Fragment implements CameraListeners, View.On
                             isCamInstShown = false;
                             bottomSheetDialog.cancel();
 
+<<<<<<< HEAD
+                            fragmentCameraBinding.previewView.removeAllViews();
+=======
 //                            fragmentCameraBinding.previewView.removeAllViews();//android 14
                             fragmentCameraBinding.hidePreviewView.setVisibility(View.VISIBLE);//android 14
+>>>>>>> origin/main
 
 //                        cameraProvider.unbind(previewUseCase);
 //                        cameraProvider = null;
@@ -708,7 +781,11 @@ public class CameraFragment extends Fragment implements CameraListeners, View.On
                         setUi(View.GONE, View.GONE, View.GONE, View.GONE, View.GONE, View.GONE, View.VISIBLE, View.GONE);
                         if (SingletonData.getInstance().isQuickLiveness()) {
                             setAnimationViewsAndText(fragmentCameraBinding.animationView, "facia_loader.svg", "", "", 0.0, false);
+<<<<<<< HEAD
+                            new ConvertBitmapToFileAndProcess(null).execute();
+=======
                             new ConvertBitmapToFileAndProcess(bitmap, true).execute();
+>>>>>>> origin/main
                         } else {
                             setAnimationViewsAndText(fragmentCameraBinding.animationViewUpload, "facia_uploading.svg",
                                     SingletonData.getInstance().getActivity().getString(R.string.uploading), "", 0.0, false);
@@ -814,8 +891,13 @@ public class CameraFragment extends Fragment implements CameraListeners, View.On
     }
 
     @Override
+<<<<<<< HEAD
+    public void convertBitmapToBase64() {
+        new BitmapToBase64(detectedFaceFrame).execute();
+=======
     public void convertBitmapToBase64(Bitmap bitmap) {
         new BitmapToBase64(bitmap).execute();
+>>>>>>> origin/main
     }
 
     /**
@@ -950,6 +1032,12 @@ public class CameraFragment extends Fragment implements CameraListeners, View.On
                 isDocCaptured = false;
                 retakeBtnHandling();
             } else if (id == R.id.captureDocBtn) {
+<<<<<<< HEAD
+                isDocCaptured = true;
+                Bitmap bitmap = fragmentCameraBinding.previewView.getBitmap();
+                captureSound();
+                convertAndDisplayCapturedCard(helperFunctions.cropFrame(bitmap));
+=======
                 if (fragmentCameraBinding.previewView.getPreviewStreamState()
                         .getValue().toString().equalsIgnoreCase("STREAMING")) {
                     isDocCaptured = true;
@@ -957,6 +1045,7 @@ public class CameraFragment extends Fragment implements CameraListeners, View.On
                     captureSound();
                     convertAndDisplayCapturedCard(helperFunctions.cropFrame(bitmap));
                 }
+>>>>>>> origin/main
             } else if (id == R.id.captureDocLivenessBtn) {
                 Bitmap bitmap = fragmentCameraBinding.previewView.getBitmap();
                 fragmentCameraBinding.detectedFrame.setImageBitmap(bitmap);
@@ -1027,16 +1116,25 @@ public class CameraFragment extends Fragment implements CameraListeners, View.On
                 isCardDetectionInProcess = true;
                 Bitmap bitmap = fragmentCameraBinding.previewView.getBitmap();
                 if (bitmap != null) {
+<<<<<<< HEAD
+                    if (Color.alpha(bitmap.getPixel(0, 0)) != 0 &&
+                            fragmentCameraBinding.docInstParentLayout.getVisibility() == View.GONE) {
+=======
                     if ((Color.alpha(bitmap.getPixel(0, 0)) != 0 || fragmentCameraBinding.previewView.getPreviewStreamState()
                             .getValue().toString().equalsIgnoreCase("STREAMING")) &&
                             fragmentCameraBinding.docInstParentLayout.getVisibility() == View.GONE) {
                         fragmentCameraBinding.hidePreviewView.setVisibility(View.GONE);//android 14
+>>>>>>> origin/main
                         fragmentCameraBinding.docInstParentLayout.setVisibility(View.VISIBLE);
                     }
                     new CameraFragment.DetectCardInBg(bitmap).execute();
                 } else {
 //                    if (isResumed){
+<<<<<<< HEAD
+                    new Handler().postDelayed(this::detectCard, 1000);
+=======
                     new Handler().postDelayed(this::detectCard, 500);
+>>>>>>> origin/main
                 }
 //                } else {
 //                    detectCard(false);
@@ -1049,7 +1147,11 @@ public class CameraFragment extends Fragment implements CameraListeners, View.On
 
     protected void convertAndDisplayCapturedCard(Bitmap bitmap) {
         docBtnHandler.removeCallbacks(docBtnRunnable);
+<<<<<<< HEAD
+        new CameraFragment.ConvertBitmapToFileAndProcess(bitmap).execute();
+=======
         new CameraFragment.ConvertBitmapToFileAndProcess(bitmap, false).execute();
+>>>>>>> origin/main
         fragmentCameraBinding.detectedFrame.setImageBitmap(bitmap);
         setUi(View.GONE, View.GONE, View.GONE, View.GONE, View.GONE, View.GONE, View.GONE, View.VISIBLE);
     }
@@ -1251,12 +1353,19 @@ public class CameraFragment extends Fragment implements CameraListeners, View.On
      * Async method to convert bitmap to file
      */
     private class ConvertBitmapToFileAndProcess {
+<<<<<<< HEAD
+        Bitmap detectedDoc = null;
+
+        public ConvertBitmapToFileAndProcess(Bitmap detectedDoc) {
+            this.detectedDoc = detectedDoc;
+=======
         Bitmap bitmap = null;
         Boolean isQl = true;
 
         public ConvertBitmapToFileAndProcess(Bitmap bitmap, Boolean isQl) {
             this.bitmap = bitmap;
             this.isQl = isQl;
+>>>>>>> origin/main
         }
 
         public void execute() {
@@ -1269,18 +1378,31 @@ public class CameraFragment extends Fragment implements CameraListeners, View.On
         }
 
         protected File doInBackground() {
+<<<<<<< HEAD
+            if (detectedDoc == null) {
+                return convertBitmapToFile(detectedFaceFrame, false);
+            } else {
+                return convertBitmapToFile(detectedDoc, true);
+=======
             if (isQl) {
                 return convertBitmapToFile(bitmap, false);
             } else {
                 return convertBitmapToFile(bitmap, true);
+>>>>>>> origin/main
             }
         }
 
         protected void onPostExecute(File fileToProcess) {
+<<<<<<< HEAD
+            if (detectedDoc != null) {
+                requestModel.setIdImage(fileToProcess);
+            } else {
+=======
             if (!isQl) {
                 requestModel.setIdImage(fileToProcess);
             }
             else {
+>>>>>>> origin/main
                 try {
                     if (ServiceType.valueOf(requestModel.getConfigObject().getString("serviceType")) == ServiceType.MATCH_TO_PHOTO_ID) {
                         requestModel.setFaceImage(fileToProcess);
@@ -1328,8 +1450,12 @@ public class CameraFragment extends Fragment implements CameraListeners, View.On
             if (SingletonData.getInstance().getQlFrameList().size() == 0) {
                 qlListPrevious = System.currentTimeMillis();
                 SingletonData.getInstance().getQlFrameList().add(base64img);
+<<<<<<< HEAD
+            } else if (qlListCurrent - qlListPrevious >= TimeConstants.ADD_IN_QL_LIST_DELAY) {
+=======
             } else if (qlListCurrent - qlListPrevious >= TimeConstants.ADD_IN_QL_LIST_DELAY &&
                     SingletonData.getInstance().getQlFrameList().size() < 9) {
+>>>>>>> origin/main
                 SingletonData.getInstance().getQlFrameList().add(base64img);
                 qlListPrevious = System.currentTimeMillis();
             }
@@ -1368,6 +1494,23 @@ public class CameraFragment extends Fragment implements CameraListeners, View.On
         }
     }
 
+<<<<<<< HEAD
+    private class DetectLight {
+        Bitmap bitmap;
+        Face face;
+
+        public DetectLight(Bitmap bitmap, Face face) {
+            this.bitmap = bitmap;
+            this.face = face;
+        }
+
+        public void execute() {
+            Executor executor = Executors.newSingleThreadExecutor();
+            executor.execute(() -> {
+                final Boolean isGlow = doInBackground();
+                Handler mainHandler = new Handler(Looper.getMainLooper());
+                mainHandler.post(() -> onPostExecute(isGlow));
+=======
     private class TestPreview {
         public void execute() {
             Executor executor = Executors.newSingleThreadExecutor();
@@ -1375,10 +1518,43 @@ public class CameraFragment extends Fragment implements CameraListeners, View.On
                 final Boolean isDone = doInBackground();
                 Handler mainHandler = new Handler(Looper.getMainLooper());
                 mainHandler.post(() -> onPostExecute(isDone));
+>>>>>>> origin/main
             });
         }
 
         protected Boolean doInBackground() {
+<<<<<<< HEAD
+//            return isGlow(toGrayscale(bitmap));
+//            return isImgGlow(toGrayscale(bitmap));
+            return isImgGlowAndReflected(toGrayscale(bitmap), face.getAllContours());
+        }
+
+        protected void onPostExecute(Boolean isGlow) {
+//            if (currentState.equals("QL")) {
+            if (isGlow) {
+//                SingletonData.getInstance().setQuickLivenessFrameCount(0);
+//                fragmentCameraBinding.quickLivenessInstTxt.setText(getResources().getString(R.string.improper_lighting));
+//                fragmentCameraBinding.quickLivenessInst.setVisibility(View.VISIBLE);
+//                frameProcessed();
+
+                SingletonData.getInstance().setQuickLivenessFrameCount(0);
+//                SingletonData.getInstance().getFragmentCameraBinding().faceBorder.setBackgroundResource(
+//                        R.drawable.face_border_bg_red);
+                SingletonData.getInstance().getFragmentCameraBinding().faceDetectInst.setText(R.string.improper_lighting);
+                frameProcessed();
+            } else {
+//                fragmentCameraBinding.quickLivenessInstTxt.setText("No Light Detected");
+                faceDetectionHelper.setFaceMeshResult(face);
+            }
+//            }else {
+//                if (!isBgChanging) {
+//                    changeBgColor();
+//                }
+//                faceDetectionHelper.setFaceMeshResult(face);
+//            }
+        }
+    }
+=======
             return fragmentCameraBinding.previewView.getPreviewStreamState()
                     .getValue().toString().equalsIgnoreCase("STREAMING");
         }
@@ -1441,4 +1617,5 @@ public class CameraFragment extends Fragment implements CameraListeners, View.On
 ////            }
 //        }
 //    }
+>>>>>>> origin/main
 }

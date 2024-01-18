@@ -9,8 +9,8 @@
 <!--    production-->
 <!--    <string name="input_mail">merchant@gmail.com</string>-->
 <!--    <string name="input_pwd">h4F0Yg5R</string>-->
-    <string name="input_mail">sqa_1@facia.ai</string>
-    <string name="input_pwd">31id5Fhx</string>
+<!--    <string name="input_mail">sqa_1@facia.ai</string>-->
+<!--    <string name="input_pwd">31id5Fhx</string>-->
     <!--    staging-->
     <!--    <string name="input_mail">hammad-testing@facia.ai</string>-->
 <!--    <string name="input_pwd">facia123</string>-->
@@ -18,8 +18,8 @@
 <!--    <string name="input_mail">tester@facia.ai</string>-->
 <!--    <string name="input_pwd">12345678</string>-->
 <!--    dev3-->
-<!--    <string name="input_mail">st-hammad@facia.ai</string>-->
-<!--    <string name="input_pwd">Facia@1234</string>-->
+    <string name="input_mail">sqa_1@facia.ai</string>
+    <string name="input_pwd">31id5Fhx</string>
 <!--    demo-->
 <!--    <string name="input_mail">mobile-demo@facia.ai</string>-->
 <!--    <string name="input_pwd">QYVoz2Baio</string>-->

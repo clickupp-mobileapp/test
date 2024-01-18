@@ -5,7 +5,10 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.ValueAnimator;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+<<<<<<< HEAD
+=======
 import android.graphics.Bitmap;
+>>>>>>> origin/main
 import android.os.Handler;
 
 import com.facia.faciasdk.Activity.Helpers.Enums.OvalSize;
@@ -76,6 +79,18 @@ public class DetectionUiUpdater {
     /**
      * handling UI if face found precisely (edge to edge) in case of QL
      */
+<<<<<<< HEAD
+    protected void faceFoundEdgeToEdgeQl() {
+        try {
+            SingletonData.getInstance().setCurrentTimeSmallOval(System.currentTimeMillis());
+            if (!SingletonData.getInstance().isSmallOvalSteadyTimerOn()) {
+                SingletonData.getInstance().setSmallOvalSteadyTimerOn(true);
+                SingletonData.getInstance().setPreviousTimeSmallOval(System.currentTimeMillis());
+                SingletonData.getInstance().getCameraListeners().frameProcessed();
+//            } else if (SingletonData.getInstance().getQuickLivenessFrameCount() == ThresholdConstants.QL_MIN_FACE_DETECTION) {
+            } else if (SingletonData.getInstance().getQlFrameList().size() == ThresholdConstants.QL_MIN_FACE_DETECTION) {
+                //                if ((SingletonData.getInstance().getCurrentTimeSmallOval() -
+=======
     protected void faceFoundEdgeToEdgeQl(Bitmap bitmap) {
         try {
             if (!SingletonData.getInstance().isQlReqInProcess()) {
@@ -87,23 +102,37 @@ public class DetectionUiUpdater {
 //            } else if (SingletonData.getInstance().getQuickLivenessFrameCount() == ThresholdConstants.QL_MIN_FACE_DETECTION) {
                 } else if (SingletonData.getInstance().getQlFrameList().size() == ThresholdConstants.QL_MIN_FACE_DETECTION) {
                     //                if ((SingletonData.getInstance().getCurrentTimeSmallOval() -
+>>>>>>> origin/main
 //                    SingletonData.getInstance().getPreviousTimeSmallOval()) >= TimeConstants.HOLD_STEADY_IN_OVAL_QL) {
 
 //                SingletonData.getInstance().getFragmentCameraBinding().faceBorder.setBackgroundResource(
 //                        R.drawable.face_border_bg_success);
+<<<<<<< HEAD
+                SingletonData.getInstance().getFragmentCameraBinding().faceDetectInst.setText(R.string.perfect);
+                SingletonData.getInstance().getCameraListeners().processQuickLiveness();
+            } else {
+//                SingletonData.getInstance().getFragmentCameraBinding().faceBorder.setBackgroundResource(
+//                        R.drawable.face_border_bg_success);
+                SingletonData.getInstance().getFragmentCameraBinding().faceDetectInst.setText(R.string.hold_steady);
+=======
                     SingletonData.getInstance().getFragmentCameraBinding().faceDetectInst.setText(R.string.perfect);
                     SingletonData.getInstance().getCameraListeners().processQuickLiveness(bitmap);
                 } else {
 //                SingletonData.getInstance().getFragmentCameraBinding().faceBorder.setBackgroundResource(
 //                        R.drawable.face_border_bg_success);
                     SingletonData.getInstance().getFragmentCameraBinding().faceDetectInst.setText(R.string.hold_steady);
+>>>>>>> origin/main
 
 //                if (!SingletonData.getInstance().isVideoRecording()) {
 //                    SingletonData.getInstance().getCameraListeners().startVideoRecording();
 //                }
 
+<<<<<<< HEAD
+                SingletonData.getInstance().getCameraListeners().frameProcessed();
+=======
                     SingletonData.getInstance().getCameraListeners().frameProcessed();
                 }
+>>>>>>> origin/main
             }
         } catch (Exception e) {
             Webhooks.exceptionReport(e, "MediaPipe/FaceMeshResultImageView/faceFoundEdgeToEdge");
@@ -209,6 +238,17 @@ public class DetectionUiUpdater {
                     SingletonData.getInstance().getFragmentCameraBinding().faceDetectInst.setText(R.string.perfect);
                     SingletonData.getInstance().setFaceFinalized(true);
                     SingletonData.getInstance().getFragmentCameraBinding().showInstBtn.setEnabled(false);
+<<<<<<< HEAD
+                    new Handler().postDelayed(() -> {
+                        if (SingletonData.getInstance().isFaceFinalized()){
+                            SingletonData.getInstance().getFragmentCameraBinding().showInstBtn.setEnabled(true);
+                            SingletonData.getInstance().setFaceFinalized(false);
+                            noFaceDetectedInTheImage("noFace");
+                        }
+                    }, 1000);
+                    SingletonData.getInstance().getCameraListeners().stopVideoRecording();
+                }else {
+=======
                     SingletonData.getInstance().getCameraListeners().stopVideoRecording();
                     new Handler().postDelayed(() -> {
 //                        SingletonData.getInstance().setBlinkCount(0);
@@ -228,6 +268,7 @@ public class DetectionUiUpdater {
                     }, 2000);
 
                 } else {
+>>>>>>> origin/main
                     SingletonData.getInstance().getCameraListeners().frameProcessed();
                 }
             }

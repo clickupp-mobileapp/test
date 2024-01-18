@@ -19,6 +19,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
+<<<<<<< HEAD
+=======
         <View
             android:id="@+id/hidePreviewView"
             android:visibility="gone"
@@ -26,6 +28,7 @@
             android:layout_height="match_parent"
             android:background="#000000"/>
 
+>>>>>>> origin/main
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/faceParentLayout"
             android:layout_width="match_parent"

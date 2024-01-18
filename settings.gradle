@@ -11,9 +11,15 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
         jcenter()
+<<<<<<< HEAD
+//        maven {
+//            url 'https://jitpack.io'
+//        }
+=======
         maven {
             url 'https://jitpack.io'
         }
+>>>>>>> origin/main
     }
 }
 rootProject.name = "FaciaDemo"

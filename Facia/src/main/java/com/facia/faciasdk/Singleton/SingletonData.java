@@ -32,7 +32,11 @@ public class SingletonData {
     private final ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
     private Boolean isVideoRecording = false, isOvalSizeIncreased = false, isFaceFinalized = false, isSizeIncreasing = false,
             isDetectionTimerOn = false, isProcessingStarted = false, quickLiveness = true, isFaceDetectedFirstTime = false, isBlinkDetectionTimerOn = false,
+<<<<<<< HEAD
+            isCameraBackPressed = false, isQuickRequestInProcess = false, isSmallOvalSteadyTimerOn = false, isBlinkTimerOn = false;
+=======
             isCameraBackPressed = false, isQuickRequestInProcess = false, isSmallOvalSteadyTimerOn = false, isBlinkTimerOn = false, isQlReqInProcess = false;
+>>>>>>> origin/main
     private CameraListeners cameraListeners;
     private Boolean isCameraProcessing = false;
     private FragmentManager fragmentManager;
@@ -363,6 +367,8 @@ public class SingletonData {
         this.appInfo = appInfo;
     }
 
+<<<<<<< HEAD
+=======
     public Boolean isQlReqInProcess() {
         return isQlReqInProcess;
     }
@@ -371,6 +377,7 @@ public class SingletonData {
         isQlReqInProcess = qlReqInProcess;
     }
 
+>>>>>>> origin/main
     //    public String getQlVideoPath() {
 //        return qlVideoPath;
 //    }
