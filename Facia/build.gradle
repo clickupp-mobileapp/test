@@ -57,6 +57,7 @@ dependencies {
     implementation 'com.google.android.gms:play-services-mlkit-face-detection:17.1.0'
 
     // Tflite dependencies to run model (using for the card detection)
-    implementation 'org.tensorflow:tensorflow-lite:2.9.0'
-    implementation 'org.tensorflow:tensorflow-lite-support:0.4.2'
+//    implementation 'org.tensorflow:tensorflow-lite:2.9.0'
+    implementation 'org.tensorflow:tensorflow-lite:2.14.0'
+    implementation 'org.tensorflow:tensorflow-lite-support:0.4.4'
 }
