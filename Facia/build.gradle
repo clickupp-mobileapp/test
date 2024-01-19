@@ -72,7 +72,7 @@ afterEvaluate {
                 // You can then customize attributes of the publication as shown below.
                 groupId = 'com.github.FaciaMobile'
                 artifactId = 'android-core'
-                version = '2.1.9'
+                version = '3.0.1'
             }
         }
     }
