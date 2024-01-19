@@ -5,7 +5,7 @@ public class ApiConstants {
      * constant values
      */
     public static final String REQUEST_MODEL = "request_model";
-    public static final String SDK_VERSION = "android-core 1.1.2";
+    public static final String SDK_VERSION = "android-core 2.0.0";
     public static final String MERCHANT_APP_LOGO = "ic_merchant_app_logo";
     public static final int MAX_RESULT_API_CALL_COUNT = 39; //+1
 
