@@ -7,6 +7,9 @@ import android.view.WindowManager;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.fragment.app.Fragment;
+
+import com.facia.faciademo.Login.LoginFragment;
 
 import java.io.File;
 
@@ -50,6 +53,10 @@ public class MainActivity extends AppCompatActivity {
             getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
             getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_NO);
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+            Fragment fragment = new LoginFragment();
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.fragment_frame, fragment, fragment.getClass().getSimpleName()).addToBackStack(null).commit();
         } catch (Exception e) {
             ErrorLogs.exceptionReport(e, "MainActivity/initialization");
         }

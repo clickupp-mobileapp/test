@@ -41,7 +41,7 @@ public class SplashFragment extends Fragment {
                     try {
                         if (!MainSetAndGetData.getInstance().isSplashGone()) {
                             MainSetAndGetData.getInstance().setSplashGone(true);
-                            Navigation.findNavController(MainSetAndGetData.getInstance().getActivity(), R.id.mainHostFragment).navigate(SplashFragmentDirections.navigateFromSplashToLogin());
+//                            Navigation.findNavController(MainSetAndGetData.getInstance().getActivity(), R.id.mainHostFragment).navigate(SplashFragmentDirections.navigateFromSplashToLogin());
                         }
                     }catch (Exception e){
                         ErrorLogs.exceptionReport(e, "SplashFragment/onCreateView/CountDownTimer");
