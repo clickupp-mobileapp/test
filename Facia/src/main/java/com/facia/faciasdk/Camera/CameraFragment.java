@@ -1356,8 +1356,7 @@ public class CameraFragment extends Fragment implements CameraListeners, View.On
         }
 
         protected Bitmap doInBackground() {
-            return null;
-//            return cardDetectionTflite.run(bitmap);
+            return cardDetectionTflite.run(bitmap);
         }
 
         protected void onPostExecute(Bitmap resultedBitmap) {
