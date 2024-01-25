@@ -25,12 +25,16 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_17
         targetCompatibility JavaVersion.VERSION_17
-//        sourceCompatibility JavaVersion.VERSION_17
-//        targetCompatibility JavaVersion.VERSION_17
     }
 
     buildFeatures {
         viewBinding true
+    }
+
+    tasks.withType(GenerateModuleMetadata).configureEach {
+        dependsOn(sourcesJar) // My specific task, you may or may not need this
+        dependsOn('bundleDebugAar') // Fixes issue
+        dependsOn('bundleBetaAar')   // Fix issue
     }
 }
 
@@ -59,13 +63,3 @@ dependencies {
     implementation 'org.tensorflow:tensorflow-lite:2.14.0'
     implementation 'org.tensorflow:tensorflow-lite-support:0.4.4'
 }
-
-//afterEvaluate {
-//    publishing {
-//        publications {
-//            release(MavenPublication) {
-//                from components.release
-//            }
-//        }
-//    }
-//}
