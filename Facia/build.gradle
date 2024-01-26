@@ -67,7 +67,7 @@ publishing {
         release(MavenPublication) {
             groupId = 'com.github.clickupp-mobileapp'
             artifactId = 'test'
-            version = '4.0.3'
+            version = '4.0.4'
 
             artifact("$buildDir/outputs/aar/${project.getName()}-release.aar")
         }
