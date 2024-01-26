@@ -69,9 +69,16 @@ publishing {
             artifactId = 'test'
             version = '4.0.5'
 
-            afterEvaluate {
-                artifact("$buildDir/outputs/aar/Facia-release.aar")
-            }
+            tasks.getByName('publishReleasePublicationToMavenLocal').dependsOn(":Facia:bundleReleaseAar")
+
+//            from components.release
+
+            // Include the AAR file
+            artifact("$buildDir/outputs/aar/Facia-release.aar")
+
+//            afterEvaluate {
+//                artifact("$buildDir/outputs/aar/Facia-release.aar")
+//            }
 
 //            artifact("$buildDir/outputs/aar/${project.getName()}-release.aar")
         }
