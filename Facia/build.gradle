@@ -31,9 +31,9 @@ android {
         viewBinding true
     }
 
-    testFixtures {
-        enable = true
-    }
+//    testFixtures {
+//        enable = true
+//    }
 }
 
 dependencies {
@@ -69,7 +69,11 @@ publishing {
             artifactId = 'test'
             version = '4.0.4'
 
-            artifact("$buildDir/outputs/aar/${project.getName()}-release.aar")
+            afterEvaluate {
+                artifact("$buildDir/outputs/aar/Facia-release.aar")
+            }
+
+//            artifact("$buildDir/outputs/aar/${project.getName()}-release.aar")
         }
     }
 }
