@@ -97,3 +97,12 @@ publishing {
         }
     }
 }
+
+// Function to add a dependency to the POM file
+def addDependency(dependenciesNode, groupId, artifactId, version) {
+    def dependencyNode = dependenciesNode.appendNode('dependency')
+    dependencyNode.appendNode('groupId', groupId)
+    dependencyNode.appendNode('artifactId', artifactId)
+    dependencyNode.appendNode('version', version)
+    dependencyNode.appendNode('scope', 'implementation')
+}
