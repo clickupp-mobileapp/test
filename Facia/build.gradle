@@ -67,7 +67,7 @@ publishing {
         release(MavenPublication) {
             groupId = 'com.github.clickupp-mobileapp'
             artifactId = 'test'
-            version = '4.0.4'
+            version = '4.0.5'
 
             afterEvaluate {
                 artifact("$buildDir/outputs/aar/Facia-release.aar")
