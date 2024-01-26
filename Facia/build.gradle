@@ -30,12 +30,6 @@ android {
     buildFeatures {
         viewBinding true
     }
-
-    tasks.withType(GenerateModuleMetadata).configureEach {
-        dependsOn(sourcesJar) // My specific task, you may or may not need this
-        dependsOn('bundleDebugAar') // Fixes issue
-        dependsOn('bundleBetaAar')   // Fix issue
-    }
 }
 
 dependencies {
@@ -62,4 +56,19 @@ dependencies {
     // Tf lite dependencies to run model (using for the card detection)
     implementation 'org.tensorflow:tensorflow-lite:2.14.0'
     implementation 'org.tensorflow:tensorflow-lite-support:0.4.4'
+}
+
+publishing {
+    publications {
+        release(MavenPublication) {
+            groupId = 'com.github.clickupp-mobileapp'
+            artifactId = 'test'
+            version = '4.0.2'
+
+            afterEvaluate {
+                from components.findByName("release")
+//                from components.release
+            }
+        }
+    }
 }
