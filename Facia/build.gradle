@@ -69,7 +69,7 @@ publishing {
         release(MavenPublication) {
             groupId = 'com.github.clickupp-mobileapp'
             artifactId = 'test'
-            version = '5.0.0'
+            version = '5.0.2'
 
             tasks.getByName('publishReleasePublicationToMavenLocal').dependsOn(":Facia:bundleReleaseAar")
             artifact("$buildDir/outputs/aar/Facia-release.aar")
@@ -93,9 +93,6 @@ publishing {
                 // TensorFlow Lite dependencies
                 addDependency(dependenciesNode, 'org.tensorflow', 'tensorflow-lite', '2.14.0')
                 addDependency(dependenciesNode, 'org.tensorflow', 'tensorflow-lite-support', '0.4.4')
-
-                // ViewBinding dependency
-                addDependency(dependenciesNode, 'androidx.databinding', 'viewbinding', '8.2.1')
             }
         }
     }
