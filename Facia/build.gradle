@@ -69,7 +69,7 @@ publishing {
         release(MavenPublication) {
             groupId = 'com.github.clickupp-mobileapp'
             artifactId = 'test'
-            version = '4.0.8'
+            version = '4.0.9'
 
             tasks.getByName('publishReleasePublicationToMavenLocal').dependsOn(":Facia:bundleReleaseAar")
             artifact("$buildDir/outputs/aar/Facia-release.aar")
