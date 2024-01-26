@@ -95,7 +95,7 @@ publishing {
                 addDependency(dependenciesNode, 'org.tensorflow', 'tensorflow-lite-support', '0.4.4')
 
                 // ViewBinding dependency
-                addDependency(dependenciesNode, 'androidx.databinding', 'viewbinding', '3.5.0')
+                addDependency(dependenciesNode, 'androidx.databinding', 'viewbinding', '4.0.8')
             }
         }
     }
